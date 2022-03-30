@@ -1,0 +1,33 @@
+﻿@model Ticket
+<h1>Find Ticket</h1>
+<form method="post">
+    <div class="mb-3">
+        <label>ID TICKET</label>
+        <input type="text" name="idticket" class="form-control" />
+    </div>
+    <button class="btn btn-primary">Find ticket</button>
+</form>
+@if (Model != null) {
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID TICKET</th>
+                <th>ID USUARIO</th>
+                <th>FECHA</th>
+                <th>IMPORTE</th>
+                <th>PRODUCTO</th>
+                <th>IMAGEN</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.IdTicket</td>
+                <td>@Model.IdUsuario</td>
+                <td>@Model.Fecha.ToShortDateString()</td>
+                <td>@Model.Importe</td>
+                <td>@Model.Producto</td>
+                <td><img src="@Model.Url"/></td>
+            </tr>
+        </tbody>
+    </table>
+} 

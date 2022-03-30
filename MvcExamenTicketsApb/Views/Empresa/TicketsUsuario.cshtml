@@ -1,0 +1,33 @@
+﻿@model List<Ticket>
+<h1>Mis tickets</h1>
+@if (Model != null) {
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID TICKET</th>
+                <th>ID USUARIO</th>
+                <th>FECHA</th>
+                <th>IMPORTE</th>
+                <th>PRODUCTO</th>
+                <th>IMAGEN</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Ticket ticket in Model)
+	        {
+                <tr>
+                    <td>@ticket.IdTicket</td>
+                    <td>@ticket.IdUsuario</td>
+                    <td>@ticket.Fecha.ToShortDateString()</td>
+                    <td>@ticket.Importe</td>
+                    <td>@ticket.Producto</td>
+                    <td><img src="@ticket.Url" height="200px"/></td>
+                    <td><a class="btn btn-danger" asp-controller="Empresa" asp-action="ProcessTicket" asp-route-idticket="@ticket.IdTicket">Procesar imagen</a></td>
+                </tr>
+	        }
+        </tbody>
+    </table>
+} else {
+    <h3 style="color:red">Actualmente no tienes ningún ticket</h3>
+}
